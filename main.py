@@ -18,7 +18,7 @@ pagesToCheck = ["https://codeforces.com/group/rZXLOcYbKV/contest/312716/standing
                 "https://codeforces.com/group/rZXLOcYbKV/contest/312716/standings/groupmates/true/page/2",
                 "https://codeforces.com/group/rZXLOcYbKV/contest/312716/standings/groupmates/true/page/3",
                 "https://codeforces.com/group/rZXLOcYbKV/contest/312716/standings/groupmates/true/page/4",
-                "https://codeforces.com/group/rZXLOcYbKV/contest/312716/standings/groupmates/true/page/5"]
+                "https://codeforces.com/group/rZXLOcYbKV/contest/312716/standings/groupmates/true/page/5"]   #list of pages of standings for selenium to check
 
 login("", "", driver)   #enter a valid codeforces username (handle) and password as first and second parameters to the login function
 time.sleep(4)
@@ -41,9 +41,7 @@ for cheater in namesToRemove:
         time.sleep(3)
         xPathName = "/profile/" + cheater
         fullXPath = '//a[@href="' + xPathName + '"]'
-        #print('//a[@href="' + xPathName + '"]')
-        #print('//a[@href="/profile/WrongAnswer214"]')
-        #print(xPathName)
+        
         try:
             driver.find_element_by_xpath('//a[@href="' + xPathName + '"]')
             found = True
@@ -65,6 +63,7 @@ for cheater in namesToRemove:
         except:
             print(cheater + " already removed")
             continue
+            
     if (found and removedToPractice):
         namesFoundAndRemoved.append(cheater)
     elif (not found):
@@ -86,7 +85,3 @@ print("\n\nNames of cheaters not found at all")
 for i in namesNotFoundAtAll:
     print(i)        
 
-
-
-#<a href="/profile/WrongAnswer214" title="Expert WrongAnswer214" class="rated-user user-blue">WrongAnswer214</a>
-#<input class="ok" name="codeforces-dialog-ok-button" type="button" value="OK">
